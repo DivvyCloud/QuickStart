@@ -1,5 +1,5 @@
 cli:
-  image: divvycloudbrian/dockercompose
+  image: divvycloud/stable
   volumes:
       - ./config/divvy.json:/config/divvy.json
   environment:
