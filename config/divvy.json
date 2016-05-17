@@ -1,0 +1,44 @@
+{
+    "database": {
+        "databasehost": "mysql",
+        "databasename": "divvy",
+        "databasepassword": "divvy",
+        "databaseport": 3306,
+        "databaseusername": "divvy"
+    },
+    "divvycloudjobscheduler": {
+        "loglevel": 2
+    },
+    "divvycloudworker": {
+        "divvyrootcert": "ca.crt",
+        "divvyrootkey": "ca.key",
+        "loglevel": 2
+    },
+    "divvyinterfaceserver": {
+        "listenport": 8001,
+        "loglevel": 2
+    },
+    "documentstores": {
+        "default": {
+            "index_name": "default",
+            "name": "localhost",
+            "port": 9200,
+            "type": "elasticsearch"
+        }
+    },
+    "main": {
+        "loglevel": 2,
+        "logpath": "logs/"
+    },
+    "redis": {
+        "redishost": "redis",
+        "redisport": 6379
+    },
+    "securedatabase": {
+        "databasehost": "mysql",
+        "databasename": "divvykeys",
+        "databasepassword": "divvy",
+        "databaseport": 3306,
+        "databaseusername": "divvy"
+    }
+}
