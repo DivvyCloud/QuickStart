@@ -32,18 +32,18 @@ export CONTACT_EMAIL=my_email
 docker-compose up -d
 ````
 
-It will take DivvyCloud a few moments to initialize. 
-Connect to in a web browser
-http://[ip_address_of_system]:8001/
+It will take DivvyCloud a few moments to initialize.   
+Connect to in a web browser.  
+http://[ip_address_of_system]:8001/  
 
-The first page you will see is a admin setup page. 
+The first page you will see is a admin setup page.    
 
 
 ### Quick Notes about CentOS w/ SE Linux] ###
 
-SE Linux will prevent Docker from writing to the host system for persisting
-MySQL and ElasticSearch data. The work around for this is :
+SE Linux will prevent Docker from writing to the host system for persisting  
+MySQL and ElasticSearch data. The work around for this is :  
 
-`
-  bash#  chcon -Rt svirt_sandbox_file_t esdata
-`
+```bash
+chcon -Rt svirt_sandbox_file_t esdata
+```
