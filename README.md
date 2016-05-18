@@ -33,18 +33,10 @@ docker-compose up -d
 ````
 
 It will take DivvyCloud a few moments to initialize. 
-
-
-## Last Step:  
-
 Connect to in a web browser
 http://[ip_address_of_system]:8001/
 
 The first page you will see is a admin setup page. 
-
-## Finally ## 
-
-You are done .. enjoy divvycloud
 
 
 ### Quick Notes about CentOS w/ SE Linux] ###
