@@ -23,17 +23,17 @@ Please make sure to export the following variables:
 	- CONTACT_NAME
 	- CONTACT_EMAIL
 
-`
+```bash
 bash# export COMPANY_NAME=my_company
 bash# export CONTACT_NAME=my_name
 bash# export CONTACT_EMAIL=my_email
-`
+````
 
 ## Second : Start DivvyCloud using Docker Compose ##
 
-`
+```bash
 docker-compose up -d
-`
+````
 
 It will take DivvyCloud a few moments to initialize. 
 
