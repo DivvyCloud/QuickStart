@@ -19,9 +19,6 @@ All commands below assume your currenty working directory is the quickstart/ dir
 ## First : Export registration variables 
 The DivvyCloud docker setup looks for specific variables for automatic registration
 Please make sure to export the following variables:
-...COMPANY_NAME
-...CONTACT_NAME
-...CONTACT_EMAIL
 
 ```bash
 export COMPANY_NAME=my_company
