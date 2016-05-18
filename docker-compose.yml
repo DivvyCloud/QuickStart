@@ -90,7 +90,6 @@ redis:
 mysql:
   image: mysql
   volumes:
-    - ./db/:/var/lib/mysql
     - ./config/divvycloud_mysql_entrypoint.sh:/docker-entrypoint-initdb.d/divvycloud_mysql_entrypoint.sh
     
   environment:

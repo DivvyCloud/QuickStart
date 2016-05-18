@@ -10,7 +10,7 @@ If using AWS, we recommend using a  m4.xlarge as a base spec for the quickstart 
 docker-compose is also required for the DivvyCloud quickstart setup. 
 Please see  https://docs.docker.com/compose/install/  for more information regarding docker-compose installation
 
-## Setup ##
+## Setup 
 
 Once the system is up and running please sync down this repository.
 All commands below assume your currenty working directory is the quickstart/ directory found in this repo. 
@@ -35,12 +35,10 @@ bash# export CONTACT_EMAIL=my_email
 docker-compose up -d
 `
 
-## Third : Please wait ... ## 
-
 It will take DivvyCloud a few moments to initialize. 
 
 
-## Last Step: ## 
+## Last Step:  
 
 Connect to in a web browser
 http://[ip_address_of_system]:8001/
@@ -59,5 +57,4 @@ MySQL and ElasticSearch data. The work around for this is :
 
 `
   bash#  chcon -Rt svirt_sandbox_file_t esdata
-  bash#  chcon -Rt svirt_sandbox_file_t db
 `
