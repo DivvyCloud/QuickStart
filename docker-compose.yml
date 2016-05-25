@@ -2,7 +2,7 @@ cli:
   image: divvycloud/stable
   volumes:
       - ./config/divvy.json:/config/divvy.json 
-      - ./plugins/:plugins/
+      - ./plugins/:/plugins/
   environment:
     VIRTUAL_ENV: '/'
   entrypoint:
