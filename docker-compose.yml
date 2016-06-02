@@ -1,5 +1,5 @@
 cli:
-  image: divvycloud/stable
+  image: divvycloud/divvycloud
   volumes:
       - ./config/divvy.json:/config/divvy.json 
       - ./plugins/:/plugins/
