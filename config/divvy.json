@@ -21,7 +21,7 @@
     "documentstores": {
         "default": {
             "index_name": "default",
-            "name": "localhost",
+            "name": "elasticsearch",
             "port": 9200,
             "type": "elasticsearch"
         }
