@@ -92,6 +92,7 @@ mysql:
   image: mysql
   volumes:
     - ./config/divvycloud_mysql_entrypoint.sh:/docker-entrypoint-initdb.d/divvycloud_mysql_entrypoint.sh
+    - ./db/:/var/lib/mysql
     
   environment:
     MYSQL_ROOT_PASSWORD: 'divvy'
