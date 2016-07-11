@@ -3,6 +3,7 @@ cli:
   volumes:
       - ./config/divvy.json:/config/divvy.json 
       - ./plugins/:/plugins/
+      - ./logs/:/logs/
   environment:
     VIRTUAL_ENV: '/'
   entrypoint:
