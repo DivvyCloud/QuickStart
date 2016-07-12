@@ -12,8 +12,11 @@ Please see  https://docs.docker.com/compose/install/  for more information regar
 
 ## Setup 
 
-Once the system is up and running please sync down this repository.
-All commands below assume your currenty working directory is the quickstart/ directory found in this repo. 
+Once Docker and docker-compose is up and running please sync down this repository:
+```bash
+git clone https://github.com/DivvyCloud/QuickStart.git
+```
+All commands below assume your currenty working directory is the Quickstart/ directory found in this repo. 
 
 
 ## First : Export registration variables 
@@ -29,6 +32,7 @@ export CONTACT_EMAIL=my_email
 ## Second : Start DivvyCloud using Docker Compose ##
 
 ```bash
+cd QuickStart
 docker-compose up -d
 ````
 
@@ -38,6 +42,14 @@ http://[ip_address_of_system]:8001/
 
 The first page you will see is a admin setup page.    
 
+## Updating the DivvyCloud Docker Environment
+
+```bash
+cd QuickStart/
+docker-compose pull
+docker-compose down
+docker-compose up -d
+```
 
 ### Quick Notes about CentOS w/ SE Linux] ###
 
