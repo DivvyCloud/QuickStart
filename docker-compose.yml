@@ -4,8 +4,6 @@ cli:
       - ./config/divvy.json:/config/divvy.json 
       - ./plugins/:/plugins/
       - ./logs/:/logs/
-      - /Users/focus/.ssh/:/root/.ssh/
-      - ./test.yml:/test.yml
   environment:
     VIRTUAL_ENV: '/'
   entrypoint:
@@ -106,5 +104,5 @@ mysql:
 
 elasticsearch:
   image: elasticsearch:1.7
-  #volumes:
-    #- ./esdata:/usr/share/elasticsearch/data 
+  volumes:
+    - ./esdata:/usr/share/elasticsearch/data 
