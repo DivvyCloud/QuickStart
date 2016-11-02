@@ -4,6 +4,8 @@ cli:
       - ./config/divvy.json:/config/divvy.json 
       - ./plugins/:/plugins/
       - ./logs/:/logs/
+      - /Users/focus/.ssh/:/root/.ssh/
+      - ./test.yml:/test.yml
   environment:
     VIRTUAL_ENV: '/'
   entrypoint:
@@ -56,6 +58,8 @@ on-demand:
     service: cli
   hostname: ondemand
   command: divvycloudworker -t on-demand -n
+  ports:
+  - "6899:6899"
   links:
     - redis
     - mysql
@@ -101,6 +105,6 @@ mysql:
     MYSQL_PASSWORD: 'divvy'
 
 elasticsearch:
-  image: elasticsearch
-  volumes:
-    - ./esdata:/usr/share/elasticsearch/data elasticsearch
+  image: elasticsearch:1.7
+  #volumes:
+    #- ./esdata:/usr/share/elasticsearch/data 

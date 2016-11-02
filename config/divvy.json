@@ -22,6 +22,7 @@
         "default": {
             "index_name": "default",
             "name": "elasticsearch",
+            "hosts":["http://elasticsearch:9200"],
             "port": 9200,
             "type": "elasticsearch"
         }
@@ -40,5 +41,9 @@
         "databasepassword": "divvy",
         "databaseport": 3306,
         "databaseusername": "divvy"
+    },
+    "sentry" : {
+    "sentrydsn" : "https://390cee647f874a6a9c03fb99d574e3c9:59a88133e80a4372bfe81a2f2951a3bb@bugs.divvycloud.com/4",
+    "enabled" : true
     }
 }
