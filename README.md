@@ -48,12 +48,12 @@ export CONTACT_EMAIL=my_email
 
 ```bash
 cd QuickStart
-sudo -E docker-compose up
+sudo -E /usr/local/bin/docker-compose up
 ````
 
 If you want to have the containers run in the background , simply append -d to the docker-compose command. 
 ```bash
-docker-compouse up -d
+sudo -E /usr/local/bin/docker-compose up -d
 ```
 
 
