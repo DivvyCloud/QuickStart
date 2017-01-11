@@ -4,11 +4,31 @@ This compose file is the fastest way to get up and running with DivvyCloud.
 All service dependencies are spun up with DivvyCloud as containers.
 
 ## Min Specs and pre-reqs
-DivvyCloud requires atleast 6 Gigs of memory and 4 cores.
+DivvyCloud requires atleast 6 Gigs of memory and 4 cores. 
 If using AWS, we recommend using a  m4.xlarge as a base spec for the quickstart system. 
+
+Supported distributions are :
+
+ - Ubuntu 14.04+ 
+ - CentOS 6+
 
 docker-compose is also required for the DivvyCloud quickstart setup. 
 Please see  https://docs.docker.com/compose/install/  for more information regarding docker-compose installation
+
+## Install docker and docker-compose
+
+Install the latest version of docker by running:
+
+```bash
+curl -sSL https://get.docker.com/ | sh
+```
+
+Next we need to install docker-compose
+
+```bash
+curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
 
 ## Setup 
 
@@ -17,7 +37,6 @@ Once Docker and docker-compose is up and running please sync down this repositor
 git clone https://github.com/DivvyCloud/QuickStart.git
 ```
 All commands below assume your currenty working directory is the Quickstart/ directory found in this repo. 
-
 
 ## First : Export registration variables 
 The DivvyCloud docker setup looks for specific variables for automatic registration
@@ -33,8 +52,14 @@ export CONTACT_EMAIL=my_email
 
 ```bash
 cd QuickStart
-docker-compose up -d
+docker-compose up
 ````
+
+If you want to have the containers run in the background , simply append -d to the docker-compose command. 
+```bash
+docker-compouse up -d
+```
+
 
 It will take DivvyCloud a few moments to initialize.   
 Connect to in a web browser.  
@@ -42,7 +67,7 @@ http://[ip_address_of_system]:8001/
 
 The first page you will see is a admin setup page.    
 
-## Updating the DivvyCloud Docker Environment
+## Upgrading the DivvyCloud Docker Environment
 
 ```bash
 cd QuickStart/
@@ -58,4 +83,5 @@ MySQL and ElasticSearch data. The work around for this is :
 
 ```bash
 chcon -Rt svirt_sandbox_file_t esdata
+chcon -Rt svirt_sandbox_file_t db
 ```
