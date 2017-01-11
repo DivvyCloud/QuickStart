@@ -17,16 +17,11 @@ Please see  https://docs.docker.com/compose/install/  for more information regar
 
 ## Install docker and docker-compose
 
-Install the latest version of docker by running:
+Install the latest version of docker and docker-compose by running:
 
 ```bash
-curl -sSL https://get.docker.com/ | sh
-```
-
-Next we need to install docker-compose
-
-```bash
-curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -sSL https://get.docker.com/ | sh
+sudo curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
 
@@ -52,7 +47,7 @@ export CONTACT_EMAIL=my_email
 
 ```bash
 cd QuickStart
-docker-compose up
+sudo -E docker-compose up
 ````
 
 If you want to have the containers run in the background , simply append -d to the docker-compose command. 
