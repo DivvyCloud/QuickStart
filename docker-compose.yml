@@ -18,10 +18,21 @@ services:
     - divvycloudjobscheduler
     - -n
 
+  loadbalancer:
+    image: 'dockercloud/haproxy:latest'
+    links:
+      - interfaceserver
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+
   interfaceserver:
     image: divvycloud/quickstart
     environment:
       VIRTUAL_ENV: /
+      VIRTUAL_PROTO: uwsgi
+      VIRTUAL_HOST: "*"
     entrypoint:
     - /entrypoint.sh
     links:
@@ -30,7 +41,7 @@ services:
     - mysql:mysql
     - mysql_secure:mysql_secure
     ports:
-    - 8001:8001/tcp
+    - 8001/tcp
     command:
     - ./uwsgi.sh
 
@@ -70,8 +81,6 @@ services:
 
   mysql:
     image: mysql
-    ports:
-      - 3306/tcp
     volumes:
       - ./db:/var/lib/mysql 
     environment:
@@ -82,8 +91,6 @@ services:
 
   mysql_secure:
     image: mysql
-    ports:
-      - 3306/tcp
     volumes:
       - ./secure_db:/var/lib/mysql 
     environment:
@@ -94,15 +101,11 @@ services:
 
   redis:
     image: redis
-    ports:
-    - 6379/tcp
 
   elasticsearch:
     image: elasticsearch:1.7
     volumes:
       - ./esdata:/usr/share/elasticsearch/data
-    ports:
-    - 9200/tcp
     command:
     - elasticsearch
     - -Des.cluster.name=divvy
