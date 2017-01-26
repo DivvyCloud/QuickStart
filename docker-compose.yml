@@ -41,7 +41,7 @@ services:
     - mysql:mysql
     - mysql_secure:mysql_secure
     ports:
-    - 8001/tcp
+    - 8001:8001/tcp
     command:
     - ./uwsgi.sh
 

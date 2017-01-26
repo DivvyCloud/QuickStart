@@ -59,7 +59,7 @@ sudo -E /usr/local/bin/docker-compose up -d
 
 It will take DivvyCloud a few moments to initialize.   
 Connect to in a web browser.  
-http://[ip_address_of_system]:8001/  
+http://[ip_address_of_system]/  
 
 The first page you will see is a admin setup page.    
 
