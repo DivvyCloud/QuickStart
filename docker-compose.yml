@@ -1,5 +1,13 @@
 version: '2'
 services:
+  loadbalancer:
+    image: 'dockercloud/haproxy:latest'
+    links:
+      - interfaceserver
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
   scheduler:
     image: divvycloud/quickstart
     environment:
@@ -13,25 +21,14 @@ services:
     - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
-    - mysql_secure:mysql_secure
     command:
     - divvycloudjobscheduler
     - -n
-
-  loadbalancer:
-    image: 'dockercloud/haproxy:latest'
-    links:
-      - interfaceserver
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - 80:80
 
   interfaceserver:
     image: divvycloud/quickstart
     environment:
       VIRTUAL_ENV: /
-      VIRTUAL_PROTO: uwsgi
       VIRTUAL_HOST: "*"
     entrypoint:
     - /entrypoint.sh
@@ -39,7 +36,6 @@ services:
     - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
-    - mysql_secure:mysql_secure
     ports:
     - 8001:8001/tcp
     command:
@@ -55,7 +51,6 @@ services:
     - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
-    - mysql_secure:mysql_secure
     command:
     - divvycloudworker
     - -t
@@ -72,40 +67,47 @@ services:
     - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
-    - mysql_secure:mysql_secure
     command:
     - divvycloudworker
     - -t
     - harvester-long
     - -n
 
+  mysql-setup:
+    image: divvycloud/botfactory-db-setup
+    environment:
+      MYSQL_PASSWORD: divvy
+      MYSQL_ROOT_PASSWORD: divvy
+      MYSQL_USER: divvy
+    stdin_open: true
+    tty: true
+
   mysql:
     image: mysql
+    ports:
+      - 3306/tcp
     volumes:
-      - ./db:/var/lib/mysql 
+      - ./data/db:/var/lib/mysql 
+    volumes_from:
+      - mysql-setup
     environment:
       MYSQL_ROOT_PASSWORD: divvy
       MYSQL_DATABASE: divvy
       MYSQL_USER: divvy
       MYSQL_PASSWORD: divvy
 
-  mysql_secure:
-    image: mysql
-    volumes:
-      - ./secure_db:/var/lib/mysql 
-    environment:
-      MYSQL_ROOT_PASSWORD: divvy
-      MYSQL_DATABASE: divvykeys
-      MYSQL_USER: divvy
-      MYSQL_PASSWORD: divvy
 
   redis:
     image: redis
+    ports:
+    - 6379/tcp
 
   elasticsearch:
     image: elasticsearch:1.7
     volumes:
-      - ./esdata:/usr/share/elasticsearch/data
+      - ./data/esdata:/usr/share/elasticsearch/data
+    ports:
+    - 9200/tcp
     command:
     - elasticsearch
     - -Des.cluster.name=divvy
