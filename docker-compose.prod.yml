@@ -1,0 +1,61 @@
+version: '2'
+
+services:
+
+  loadbalancer:
+    image: 'dockercloud/haproxy:latest'
+    links:
+      - interfaceserver
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+
+  scheduler:
+    image: divvycloud/quickstart
+    env_file:
+      - prod.env
+      - register.env
+    entrypoint:
+    - /entrypoint.sh
+    command:
+    - divvycloudjobscheduler
+    - -n
+
+  interfaceserver:
+    image: divvycloud/quickstart
+    env_file:
+      - register.env
+      - prod.env
+    entrypoint:
+    - /entrypoint.sh
+    ports:
+    - 8001:8001/tcp
+    command:
+    - ./uwsgi.sh
+
+  Worker:
+    image: divvycloud/quickstart
+    env_file:
+      - register.env
+      - prod.env
+    entrypoint:
+    - /entrypoint.sh
+    command:
+    - divvycloudworker
+    - -t
+    - on-demand,harvester,processor
+    - -n
+
+  longharvest:
+    image: divvycloud/quickstart
+    env_file:
+      - register.env
+      - prod.env
+    entrypoint:
+    - /entrypoint.sh
+    command:
+    - divvycloudworker
+    - -t
+    - harvester-long
+    - -n

@@ -10,6 +10,8 @@ services:
       - 80:80
   scheduler:
     image: divvycloud/quickstart
+    env_file:
+      - register.env
     environment:
       VIRTUAL_ENV: /
       COMPANY_NAME: ${COMPANY_NAME}
