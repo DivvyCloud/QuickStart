@@ -30,7 +30,7 @@ services:
     entrypoint:
     - /entrypoint.sh
     ports:
-    - 8001:8001/tcp
+    - 8001/tcp
     command:
     - ./uwsgi.sh
 
