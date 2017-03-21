@@ -9,7 +9,7 @@ services:
     ports:
       - 80:80
   scheduler:
-    image: divvycloud/quickstart
+    image: divvycloud/botfactory
     env_file:
       - register.env
     environment:
@@ -28,7 +28,7 @@ services:
     - -n
 
   interfaceserver:
-    image: divvycloud/quickstart
+    image: divvycloud/botfactory
     environment:
       VIRTUAL_ENV: /
       VIRTUAL_HOST: "*"
@@ -44,7 +44,7 @@ services:
     - ./uwsgi.sh
 
   Worker:
-    image: divvycloud/quickstart
+    image: divvycloud/botfactory
     environment:
       VIRTUAL_ENV: /
     entrypoint:
@@ -60,7 +60,7 @@ services:
     - -n
 
   longharvest:
-    image: divvycloud/quickstart
+    image: divvycloud/botfactory
     environment:
       VIRTUAL_ENV: /
     entrypoint:
