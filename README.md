@@ -72,7 +72,7 @@ or to run BotFactory in the background, use:
 sudo -E /usr/local/bin/docker-compose up -d
 ```
 
-## Configure BotFactory##
+## Configure BotFactory
 After BotFactory has completed its launch, you can configure your BotFactory 
 installation by connecting to your instance using a browser via its public IP 
 address, e.g., http://[ip_address_of_your_BotFactory_installation]/  
