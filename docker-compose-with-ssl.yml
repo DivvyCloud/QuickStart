@@ -2,10 +2,13 @@ version: '2'
 services:
   loadbalancer:
     image: 'dockercloud/haproxy:latest'
+    environment:
+      CERT_FOLDER: /certs/
     links:
       - interfaceserver
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./certs/:/certs/
     ports:
       - 443:443
       - 80:80
@@ -32,7 +35,7 @@ services:
     image: divvycloud/botfactory
     environment:
       VIRTUAL_ENV: /
-      VIRTUAL_HOST: "http://*"
+      VIRTUAL_HOST: "http://*, https://*"
     entrypoint:
     - /entrypoint.sh
     links:
