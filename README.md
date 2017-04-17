@@ -88,10 +88,10 @@ Your password must be at least 12 characters in length.
 
 After you have created your administrator account, you will be asked to log 
 into BotFactory with your administrator account credentials. When you do, 
-you can add you cloud accounts (see http://docs.divvycloud.com under 
-"Cloud Support") to start harvesting data and explore Bot templates (under 
-"BotFactory => Templates Listing") to select which bots to customize and/or 
-activate.
+you can add your cloud accounts to start harvesting data and explore bot 
+templates to select bots to customize and/or activate (see 
+http://docs.divvycloud.com under "Cloud Support" and "BotFactory => 
+Templates Listing" respectively.) 
 
 ### Note about CentOS with SE Linux
 
