@@ -13,11 +13,11 @@ BotFactory supports two primary Linux distributions. They are:
 BotFactory requires an instance with at least:
 
  - 4 cores
- - 6 Gb of memory per core
+ - 6 Gb of memory
  - 20 Gb root volume
 
 If using AWS, we recommend using a m4.xlarge instance, which has 4 cores and 
-16 Gb per core, and attaching a volume with 30 Gb.
+16 Gb, and attaching a volume with 30 Gb.
 
 ## Install Docker and Docker-Compose
 
