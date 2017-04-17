@@ -5,6 +5,7 @@ Compose. This quick start guide provides instructions on how to use Docker
 Compose to launch BotFactory and all of its service dependencies as containers.
 
 ## Provision BotFactory Instance
+
 BotFactory supports two primary Linux distributions. They are:
 
  - Ubuntu 14.04+ 
@@ -44,19 +45,21 @@ git clone https://github.com/DivvyCloud/QuickStart.git
 ```
 
 ## Update register.env with Export Variables 
+
 When registering your installation of BotFactory, Docker checks the values of 
 specific registration variables. In the QuickStart directory, edit the file 
 'register.env' to include your company information, your name, and your email. 
-For example, Jane Doe at Acme Corporation's 'register.env' would be updated 
-like the following:
+When doing so, use underscores in lieu of spaces. For example, Jane Doe at 
+Acme Corporation's 'register.env' would be updated like the following:
 
 ```bash
 export COMPANY_NAME="Acme_Corporation"
 export CONTACT_NAME="Jane_Doe"
 export CONTACT_EMAIL="jane.doe@acmecorp.com"
-````
+```
 
 ## Start BotFactory with Docker Compose
+
 Now you are ready to start BotFactory. You can run BotFactory in the foreground 
 using the first command or in the background by using the second command. Both 
 commands assume you are in the QuickStart directory.
@@ -65,7 +68,7 @@ To run BotFactory in the foreground and see logging information in your
 terminal, use:
 ```bash
 sudo -E /usr/local/bin/docker-compose up
-````
+```
 
 or to run BotFactory in the background, use: 
 ```bash
@@ -73,14 +76,22 @@ sudo -E /usr/local/bin/docker-compose up -d
 ```
 
 ## Configure BotFactory
+
 After BotFactory has completed its launch, you can configure your BotFactory 
 installation by connecting to your instance using a browser via its public IP 
 address, e.g., http://[ip_address_of_your_BotFactory_installation]/  
 
 The first page you will see is an administrator account creation page. On the 
 page, you will enter your name and email address and create a userid and 
-password. Afterwards, you will be asked to log into BotFactory with the account 
-you created.
+password. Your userid can be your email address, but it doesn't have to be. 
+Your password must be at least 12 characters in length.
+
+After you have created your administrator account, you will be asked to log 
+into BotFactory with your administrator account credentials. When you do, 
+you can add you cloud accounts (see http://docs.divvycloud.com under 
+"Cloud Support") to start harvesting data and explore Bot templates (under 
+"BotFactory => Templates Listing") to select which bots to customize and/or 
+activate.
 
 ### Note about CentOS with SE Linux
 
