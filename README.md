@@ -2,7 +2,12 @@
 
 The fastest and most consistent way to launch BotFactory is to use Docker 
 Compose. This quick start guide provides instructions on how to use Docker 
-Compose to launch BotFactory and all of its service dependencies as containers.
+Compose to launch BotFactory and all of its service dependencies as containers 
+in less than 15 minutes.
+
+This quickstart method is intended for trial environments, not production 
+environments. If you wish to set up a production environment, please refer 
+to our Enterprise Set-up documentation (INSERT LINK HERE).
 
 ## Provision BotFactory Instance
 
@@ -41,20 +46,20 @@ After installing Docker and Docker-Compose, you will need to download the
 BotFactory repository from GitHub:
 
 ```bash
-git clone https://github.com/DivvyCloud/QuickStart.git
+git clone https://github.com/DivvyCloud/QuickStart.git botfactory
 ```
 
-## Update register.env with Export Variables 
+## Set Export Variables 
 
 When registering your installation of BotFactory, Docker checks the values of 
-specific registration variables. In the QuickStart directory, edit the file 
-'register.env' to include your company information, your name, and your email. 
-When doing so, use underscores in lieu of spaces. For example, Jane Doe at 
-Acme Corporation's 'register.env' would be updated like the following:
+certain registration variables, specifically your company information, your 
+name, and your email. To set her export variables, Jane Doe at Acme 
+Corporation, for example, would use the following:
 
 ```bash
-export COMPANY_NAME="Acme_Corporation"
-export CONTACT_NAME="Jane_Doe"
+export DIVVY_HOME='pwd'
+export COMPANY_NAME="Acme Corporation"
+export CONTACT_NAME="Jane Doe"
 export CONTACT_EMAIL="jane.doe@acmecorp.com"
 ```
 
@@ -62,7 +67,24 @@ export CONTACT_EMAIL="jane.doe@acmecorp.com"
 
 Now you are ready to start BotFactory. You can run BotFactory in the foreground 
 using the first command or in the background by using the second command. Both 
-commands assume you are in the QuickStart directory.
+commands assume you are in the 'botfactory' directory. 
+
+Of note, if you are installing BotFactory as a user
+
+[come back here tomorrow...
+If you would like to use Docker as a non-root user, you should now consider
+adding your user to the "docker" group with something like:
+
+  sudo usermod -aG docker username
+
+Remember that you will have to log out and back in for this to take effect!
+
+WARNING: Adding a user to the "docker" group will grant the ability to run
+         containers which can be used to obtain root privileges on the
+         docker host.
+         Refer to https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
+         for more information.
+]
 
 To run BotFactory in the foreground and see logging information in your 
 terminal, use:
@@ -93,12 +115,28 @@ templates to select bots to customize and/or activate (see
 http://docs.divvycloud.com under "Cloud Support" and "BotFactory => 
 Templates Listing" respectively.) 
 
+## Stop BotFactory
+
+To stop BotFactory, use the following from the 'botfactory' directory: 
+```bash
+sudo -E /usr/local/bin/docker-compose down -d
+```
+
+## Upgrading BotFactory
+
+To upgrade BotFactory, use the following from the 'botfactory' directory: 
+```bash
+sudo -E /usr/local/bin/docker-compose pull
+sudo -E /usr/local/bin/docker-compose down
+sudo -E /usr/local/bin/docker-compose up -d
+```
+
 ### Note about CentOS with SE Linux
 
 SE Linux will prevent Docker from writing MySQL and ElasticSearch data to the 
-host system. The work around for this is to run these commands:
+host system. The work around for this is to run this command from the 
+'botfactory' directory:
 
 ```bash
-chcon -Rt svirt_sandbox_file_t esdata
-chcon -Rt svirt_sandbox_file_t db
+chcon -Rt svirt_sandbox_file_t data
 ```
