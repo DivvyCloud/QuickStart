@@ -51,9 +51,9 @@ For example, Jane Doe at Acme Corporation's 'register.env' would be updated
 like the following:
 
 ```bash
-export COMPANY_NAME=Acme_Corporation
-export CONTACT_NAME=Jane_Doe
-export CONTACT_EMAIL=jane.doe@acmecorp.com
+export COMPANY_NAME="Acme_Corporation"
+export CONTACT_NAME="Jane_Doe"
+export CONTACT_EMAIL="jane.doe@acmecorp.com"
 ````
 
 ## Start BotFactory with Docker Compose
