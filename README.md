@@ -7,7 +7,7 @@ in less than 15 minutes.
 
 This quickstart method is intended for trial environments, not production 
 environments. If you wish to set up a production environment, please refer 
-to our Enterprise Set-up documentation (INSERT LINK HERE).
+to our enterprise set-up documentation (INSERT LINK HERE).
 
 ## Provision BotFactory Instance
 
@@ -51,7 +51,7 @@ git clone https://github.com/DivvyCloud/QuickStart.git botfactory
 
 ## Set Export Variables 
 
-When registering your installation of BotFactory, Docker checks the values of 
+When registering your installation, BotFactory checks the values of 
 certain registration variables, specifically your company information, your 
 name, and your email. To set her export variables, Jane Doe at Acme 
 Corporation, for example, would use the following:
@@ -68,23 +68,6 @@ export CONTACT_EMAIL="jane.doe@acmecorp.com"
 Now you are ready to start BotFactory. You can run BotFactory in the foreground 
 using the first command or in the background by using the second command. Both 
 commands assume you are in the 'botfactory' directory. 
-
-Of note, if you are installing BotFactory as a user
-
-[come back here tomorrow...
-If you would like to use Docker as a non-root user, you should now consider
-adding your user to the "docker" group with something like:
-
-  sudo usermod -aG docker username
-
-Remember that you will have to log out and back in for this to take effect!
-
-WARNING: Adding a user to the "docker" group will grant the ability to run
-         containers which can be used to obtain root privileges on the
-         docker host.
-         Refer to https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
-         for more information.
-]
 
 To run BotFactory in the foreground and see logging information in your 
 terminal, use:
@@ -122,7 +105,7 @@ To stop BotFactory, use the following from the 'botfactory' directory:
 sudo -E /usr/local/bin/docker-compose down -d
 ```
 
-## Upgrading BotFactory
+## Upgrade BotFactory
 
 To upgrade BotFactory, use the following from the 'botfactory' directory: 
 ```bash
@@ -131,12 +114,26 @@ sudo -E /usr/local/bin/docker-compose down
 sudo -E /usr/local/bin/docker-compose up -d
 ```
 
-### Note about CentOS with SE Linux
+## Note about Installing BotFactory as Non-Root User
 
-SE Linux will prevent Docker from writing MySQL and ElasticSearch data to the 
-host system. The work around for this is to run this command from the 
-'botfactory' directory:
+If you would like to use Docker as a non-root user, you will need to 
+add your user, e.g., jane_doe, to the "docker" group with something like:
+```bash
+sudo usermod -aG docker jane_doe
+```
 
+Then, you will need to log out and back in for the change to take effect.
+
+Of note, adding a user to the "docker" group will grant that user the 
+ability to run containers, which can be used to obtain root privileges 
+on the docker host. See https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface 
+for more information.
+
+## Note about CentOS with SE Linux
+
+SE Linux prevents Docker from writing MySQL and ElasticSearch data to the 
+host system. The workaround is to run this command from the 'botfactory' 
+directory:
 ```bash
 chcon -Rt svirt_sandbox_file_t data
 ```
