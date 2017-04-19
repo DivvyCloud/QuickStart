@@ -1,13 +1,13 @@
 # BotFactory Quick Start using Docker Compose 
 
-The fastest and most consistent way to launch BotFactory is to use Docker 
-Compose. This quick start guide provides instructions on how to use Docker 
-Compose to launch BotFactory and all of its service dependencies as containers 
+The fastest and most consistent way to launch BotFactory is to use Docker
+Compose. This quick start guide provides instructions on how to use Docker
+Compose to launch BotFactory and all of its service dependencies as containers
 in less than 15 minutes.
 
-This quickstart method is intended for trial environments, not production 
-environments. If you wish to set up a production environment, please refer 
-to our enterprise set-up documentation (INSERT LINK HERE).
+This quickstart method is intended for trial environments, not production
+environments. If you wish to set up a production environment, please refer
+to our enterprise set-up documentation.
 
 ## Provision BotFactory Instance
 
@@ -27,11 +27,11 @@ If using AWS, we recommend using a m4.xlarge instance, which has 4 cores and
 
 ## Install Docker and Docker-Compose
 
-First, we need to install Docker and Docker-Compose to use them for our 
-installation. (For more information about Docker-Compose, please see 
+First, you need to install Docker and Docker-Compose to use them for your
+installation. (For more information about Docker-Compose, please see
 https://docs.docker.com/compose/install/)
 
-After logging into your BotFactory instance, run the following commands to 
+After logging into your BotFactory instance, run the following commands to
 install Docker and Docker-Compose:
 
 ```bash
@@ -51,10 +51,10 @@ git clone https://github.com/DivvyCloud/QuickStart.git botfactory
 
 ## Set Export Variables 
 
-When registering your installation, BotFactory checks the values of 
-certain registration variables, specifically your company information, your 
-name, and your email. To set her export variables, Jane Doe at Acme 
-Corporation, for example, would use the following:
+When registering your installation, BotFactory checks the values of
+certain registration variables, specifically your company information, your
+name, and your email. For example, Jane Doe at Acme Corporation would use
+the following export variables:
 
 ```bash
 export DIVVY_HOME='pwd'
