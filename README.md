@@ -27,9 +27,9 @@ If using AWS, we recommend using a m4.xlarge instance, which has 4 cores and
 
 ## Install Docker and Docker-Compose
 
-First, you need to install Docker and Docker-Compose to use them for your
-installation. (For more information about Docker-Compose, please see
-https://docs.docker.com/compose/install/)
+First, you need to install Docker 1.13 or higher and Docker-Compose to use 
+them for your installation. (For more information about Docker-Compose, 
+please see https://docs.docker.com/compose/install/)
 
 After logging into your BotFactory instance, run the following commands to
 install Docker and Docker-Compose:

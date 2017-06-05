@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 
 services:
 
@@ -34,8 +34,9 @@ services:
     command:
     - ./uwsgi.sh
 
-  Worker:
+  worker:
     image: divvycloud/quickstart
+    scale: 4
     env_file:
       - register.env
       - prod.env
@@ -49,6 +50,7 @@ services:
 
   longharvest:
     image: divvycloud/quickstart
+    scale: 2
     env_file:
       - register.env
       - prod.env
