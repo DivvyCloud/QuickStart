@@ -26,6 +26,7 @@ services:
     command:
     - divvycloudjobscheduler
     - -n
+    restart: always
 
   interfaceserver:
     image: divvycloud/botfactory
