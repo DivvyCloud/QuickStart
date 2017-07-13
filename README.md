@@ -1,22 +1,22 @@
-# BotFactory Quick Start using Docker Compose 
+# DivvyCloud Quick Start using Docker Compose 
 
-The fastest and most consistent way to launch BotFactory is to use Docker
+The fastest and most consistent way to launch DivvyCloud is to use Docker
 Compose. This quick start guide provides instructions on how to use Docker
-Compose to launch BotFactory and all of its service dependencies as containers
+Compose to launch DivvyCloud and all of its service dependencies as containers
 in less than 15 minutes.
 
 This quickstart method is intended for trial environments, not production
 environments. If you wish to set up a production environment, please refer
 to our enterprise set-up documentation.
 
-## Provision BotFactory Instance
+## Provision DivvyCloud Instance
 
-BotFactory supports two primary Linux distributions. They are:
+DivvyCloud supports two primary Linux distributions. They are:
 
  - Ubuntu 14.04+ 
  - CentOS 6+ (see note at end of instructions)
 
-BotFactory requires an instance with at least:
+DivvyCloud requires an instance with at least:
 
  - 4 cores
  - 6 Gb of memory
@@ -27,23 +27,23 @@ If using AWS, we recommend using a m4.xlarge instance, which has 4 cores and
 
 ## Install Docker and Docker-Compose
 
-First, you need to install Docker 1.13 or higher and Docker-Compose to use 
+First, you need to install Docker 2.2 and Docker-Compose to use 
 them for your installation. (For more information about Docker-Compose, 
 please see https://docs.docker.com/compose/install/)
 
-After logging into your BotFactory instance, run the following commands to
+After logging into your DivvyCloud instance, run the following commands to
 install Docker and Docker-Compose:
 
 ```bash
 sudo curl -sSL https://get.docker.com/ | sh
-sudo curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.14.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-## Download BotFactory Repository 
+## Download DivvyCloud Repository 
 
 After installing Docker and Docker-Compose, you will need to download the 
-BotFactory repository from GitHub:
+DivvyCloud repository from GitHub:
 
 ```bash
 git clone https://github.com/DivvyCloud/QuickStart.git botfactory
@@ -51,7 +51,7 @@ git clone https://github.com/DivvyCloud/QuickStart.git botfactory
 
 ## Set Export Variables 
 
-When registering your installation, BotFactory checks the values of
+When registering your installation, DivvyCloud checks the values of
 certain registration variables, specifically your company information, your
 name, and your email. For example, Jane Doe at Acme Corporation would use
 the following export variables:
@@ -63,28 +63,28 @@ export CONTACT_NAME="Jane Doe"
 export CONTACT_EMAIL="jane.doe@acmecorp.com"
 ```
 
-## Start BotFactory with Docker Compose
+## Start DivvyCloud with Docker Compose
 
-Now you are ready to start BotFactory. You can run BotFactory in the foreground 
+Now you are ready to start DivvyCloud. You can run DivvyCloud in the foreground 
 using the first command or in the background by using the second command. Both 
-commands assume you are in the 'botfactory' directory. 
+commands assume you are in the 'divvycloud' directory. 
 
-To run BotFactory in the foreground and see logging information in your 
+To run DivvyCloud in the foreground and see logging information in your 
 terminal, use:
 ```bash
 sudo -E /usr/local/bin/docker-compose up
 ```
 
-or to run BotFactory in the background, use: 
+or to run DivvyCloud in the background, use: 
 ```bash
 sudo -E /usr/local/bin/docker-compose up -d
 ```
 
-## Configure BotFactory
+## Configure DivvyCloud
 
-After BotFactory has completed its launch, you can configure your BotFactory 
+After DivvyCloud has completed its launch, you can configure your DivvyCloud 
 installation by connecting to your instance using a browser via its public IP 
-address, e.g., http://[ip_address_of_your_BotFactory_installation]/  
+address, e.g., http://[ip_address_of_your_DivvyCloud_installation]/  
 
 The first page you will see is an administrator account creation page. On the 
 page, you will enter your name and email address and create a userid and 
@@ -92,29 +92,29 @@ password. Your userid can be your email address, but it doesn't have to be.
 Your password must be at least 12 characters in length.
 
 After you have created your administrator account, you will be asked to log 
-into BotFactory with your administrator account credentials. When you do, 
+into DivvyCloud with your administrator account credentials. When you do, 
 you can add your cloud accounts to start harvesting data and explore bot 
 templates to select bots to customize and/or activate (see 
-http://docs.divvycloud.com under "Cloud Support" and "BotFactory => 
+http://docs.divvycloud.com under "Cloud Support" and "DivvyCloud => 
 Templates Listing" respectively.) 
 
-## Stop BotFactory
+## Stop DivvyCloud
 
-To stop BotFactory, use the following from the 'botfactory' directory: 
+To stop DivvyCloud, use the following from the 'divvycloud' directory: 
 ```bash
 sudo -E /usr/local/bin/docker-compose down -d
 ```
 
-## Upgrade BotFactory
+## Upgrade DivvyCloud
 
-To upgrade BotFactory, use the following from the 'botfactory' directory: 
+To upgrade DivvyCloud, use the following from the 'divvycloud' directory: 
 ```bash
 sudo -E /usr/local/bin/docker-compose pull
 sudo -E /usr/local/bin/docker-compose down
 sudo -E /usr/local/bin/docker-compose up -d
 ```
 
-## Note about Installing BotFactory as Non-Root User
+## Note about Installing DivvyCloud as Non-Root User
 
 If you would like to use Docker as a non-root user, you will need to 
 add your user, e.g., jane_doe, to the "docker" group with something like:
@@ -131,8 +131,8 @@ for more information.
 
 ## Note about CentOS with SE Linux
 
-SE Linux prevents Docker from writing MySQL and ElasticSearch data to the 
-host system. The workaround is to run this command from the 'botfactory' 
+SE Linux prevents Docker from writing MySQL data to the 
+host system. The workaround is to run this command from the 'divvycloud' 
 directory:
 ```bash
 chcon -Rt svirt_sandbox_file_t data
