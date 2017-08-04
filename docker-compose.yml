@@ -20,7 +20,6 @@ services:
     entrypoint:
     - /entrypoint.sh
     links:
-    - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
     command:
@@ -36,7 +35,6 @@ services:
     entrypoint:
     - /entrypoint.sh
     links:
-    - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
     ports:
@@ -46,13 +44,12 @@ services:
 
   worker:
     image: divvycloud/botfactory
-    scale: 4
+    scale: 2
     environment:
       VIRTUAL_ENV: /
     entrypoint:
     - /entrypoint.sh
     links:
-    - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
     command:
@@ -63,13 +60,12 @@ services:
 
   longharvest:
     image: divvycloud/botfactory
-    scale: 2
+    scale: 1
     environment:
       VIRTUAL_ENV: /
     entrypoint:
     - /entrypoint.sh
     links:
-    - elasticsearch:elasticsearch
     - redis:redis
     - mysql:mysql
     command:
@@ -106,13 +102,3 @@ services:
     image: redis
     ports:
     - 6379/tcp
-
-  elasticsearch:
-    image: elasticsearch:1.7
-    volumes:
-      - ./data/esdata:/usr/share/elasticsearch/data
-    ports:
-    - 9200/tcp
-    command:
-    - elasticsearch
-    - -Des.cluster.name=divvy
