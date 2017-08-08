@@ -7,7 +7,8 @@
         "databaseusername": "divvy"
     },
     "divvycloudjobscheduler": {
-        "loglevel": 2
+        "loglevel": 2,
+        "ha_enabled": true
     },
     "divvycloudworker": {
         "divvyrootcert": "ca.crt",
